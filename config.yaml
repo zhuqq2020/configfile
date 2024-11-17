@@ -1,9 +1,11 @@
 pr: &pr {type: select, proxies: [🚀 节点选择, 🔯 香港故转, 🔯 日本故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🔯 其他节点, 🔯 IPv6节点, 🌐 全部节点, 🟢 直连]}
 proxy-providers:
-  Airport_01:
+  Airport_01_bpbpanel:
     type: http
      # 自动更新订阅时间，单位为秒
     interval: 10800
+     # 筛选节点
+    exclude-filter: "(?i)IPV6"
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -13,10 +15,12 @@ proxy-providers:
       tolerance: 50
     proxy: 🟢 直连
     url: "https://127.0.0.1"
-  Airport_02:
+  Airport_02_1元机场:
     type: http
      # 自动更新订阅时间，单位为秒
     interval: 10800
+     # 筛选节点
+    exclude-filter: "(?i)用户|com|元|国外"
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -26,7 +30,21 @@ proxy-providers:
       tolerance: 50
     proxy: 🟢 直连
     url: "https://127.0.0.1"
-
+  Airport_03_SSR免费机场:
+    type: http
+     # 自动更新订阅时间，单位为秒
+    interval: 10800
+     # 筛选节点
+     # exclude-filter: "(?i)用户|com|元|国外"
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      # 节点连通性检测时间，单位为秒
+      interval: 600
+      # 节点自动切换差值，单位为毫秒
+      tolerance: 50
+    proxy: 🟢 直连
+    url: "https://127.0.0.1""
 
 unified-delay: true
 tcp-concurrent: true
